@@ -1,0 +1,1 @@
+int PrintFileVersion(const wchar_t* pszFilePath);
