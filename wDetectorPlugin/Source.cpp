@@ -36,7 +36,7 @@ extern "C" __declspec(dllexport) void GetData(char* name, char* description, cha
 	size_t i;
 	wchar_t* name0 = L"wDetector";
 	wchar_t* description0 = L"Injects and patches wDetector\r\n\r\nwDetector by Won Soon-cheol\r\nwDetector offsets by DyS- and mca64\r\nwDetector Plugin by iCCup.xboi209";
-	wchar_t* updateurl0 = L"http://mjr896.net/techguy/wDetector/";
+	wchar_t* updateurl0 = L"0.0.0.0";
 	char *pMBBuffer = (char *)malloc(65536);
 
 	//https://github.com/MasterOfChaos/Chaoslauncher/blob/88c889c203e9fe47880fa1661657f2428ffa736e/Source/Launcher/Launcher/Plugins_CHL.pas#L82
