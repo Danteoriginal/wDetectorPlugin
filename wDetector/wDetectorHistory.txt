@@ -1,0 +1,5 @@
+; wDetector History
+; Username begins with * and recorded information begins wih #.
+; The end of recorded information ends with ##
+; 항상 같이 플레이하는 친구가 있다면 친구 아이디에 계속 기록이 쌓이지 않게
+; 아이디의 기록된 내용 끝 줄에 ##을 적어주세요.
