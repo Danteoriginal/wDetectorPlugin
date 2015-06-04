@@ -1,0 +1,93 @@
+1. 핵을 안 썼는데도 자기 유닛을 공격해요.
+
+핵을 쓰지 않았다고 해도 핵을 같이 로드하였다면 자기 유닛을 공격합니다.
+약 70가지의 핵이 등록되어 있으며, 등록된 핵 이외에는 핵으로 인식하지 않습니다.
+(런처들은 핵으로 등록 안 되어 있습니다)
+핵을 안 썼는데도 동맹이 풀린다면 0을 눌러서 리스트를 스크린샷 찍어서 wdp와 같이 올려 주세요.
+
+
+
+2. 게임 시작하면 플레이어 아이디마다 이상한 한글로 배틀넷 메시지가 떠요.
+
+아이디속임 핵을 체크하기 위한 whois 명령어 때문에 뜨는 메시지입니다.
+사용하고 계신 프리 배틀넷 서버를 알려주시면 다음 버전에 수정해 드립니다.
+
+
+
+3. 게임을 시작했는데 만든이랑 지난 시간만 나와요.
+
+싱글 플레이나, 멀티 플레이에서도 방에 혼자 있을 경우입니다.
+또는 방에 들어간 후에 wDetector를 로드해서 그렇습니다. (이 경우는 방을 다시 들어가면 됩니다)
+
+
+
+4. 스타가 자꾸 튕겨요.
+
+오류 메시지나 화면 캡춰나 덤프 파일이나 어떻게 하면 똑같이 튕기나 등등 줄 수 있는 정보를 최대한 주세요.
+그냥 튕겨요.라고만 한다면 저도 그냥 그렇구나라고 밖에 생각할 수 있는 게 없습니다.
+
+
+
+5. 한글 윈도우가 아니어도 되게 해주세요.
+
+This is to prevent foreigners from developing hacks to bypass wDetector. Starting with version 2.11, you must type "I am a Korean" in Hangul.
+
+
+
+6. 한글 윈도우인데도 한글 윈도우에서 사용하라고 떠요.
+
+아마 영문이나 다른 버전의 윈도우에 한글 언어팩을 씌운 윈도우일 겁니다.
+
+
+
+7. 드랍 방어된다고 봤는데 드랍당했어요.
+
+wDetector를 방에서 혼자 써도 방어가 되는 드랍 핵이 있고,
+둘 이상이서 사용해야 방어가 되는 드랍 핵도 있고,
+wDetector를 둘 이상이 사용해도 방어가 안 되는 드랍 핵도 있습니다.
+최선의 방법은 둘 이상이 사용하는 방법이고,
+어떤 프로그램을 쓰더라도 100% 모든 드랍 핵을 방어할 수는 없습니다.
+
+
+
+8. wDetector 폴더에 wdp 파일이 계속 생기는데 이건 뭔가요.
+
+패킷 캡춰 파일입니다. PacketAnalysis 프로그램으로 열어볼 수 있고, 모두 지우셔도 됩니다.
+생성되지 않게 하려면 wDetector.ini 파일에서 PacketLog 옵션을 0으로 끄시면 됩니다.
+
+
+
+9. 방에 들어오는 사람들 전적이 안 떠요.
+
+플레이어가 들어올 때 전적을 얻기 위해 배틀넷에 자동으로 보내는 /astat 명령어를 막아 놓았습니다.
+막은 걸 해제하려면(전적이 뜨게 하려면)
+wDetector.ini 파일에서 IgnoreAstat 옵션을 0으로 바꾸시면 됩니다.
+그 외에 다른 여러 가지 설정도 wDetector.ini 파일에서 할 수 있습니다.
+
+
+
+10. 난 그런적 없는데 방에서 누굴 강퇴했다, 드랍했다 떠요.
+
+wDetector는 주고 받는 패킷을 그대로 보여주기만 합니다.
+wDetector를 사용하지 않았어도 일어날 상황입니다.
+네트워크 상태가 좋지 않으면 자기가 강퇴나 드랍하지 않았는데도 메시지가 뜰 수 있습니다.
+
+
+
+11. There is a virus in wDetector
+
+The file is packed to prevent debugging by hackers, there is no virus in wDetector.
+
+
+
+12. Maphack is not detected
+
+Maphack has evolved a lot.
+
+
+
+13. Where can I get wDetector
+
+http://www.wlauncher.com is the homepage.
+wDetector is included as a plugin in wLauncher.
+Please install wLauncher to use wDetector plugin.
