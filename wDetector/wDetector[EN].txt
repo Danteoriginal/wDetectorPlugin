@@ -1,0 +1,212 @@
+Translation by xboi209 and Scan
+==================================================================================================================
+
+
+wDetector 3.35 (StarCraft Hack Detector)
+
+Detailed documentation will hopefully be created in the future.
+
+
+
+
+
+
+[Updates]
+
+# 3.35
+- 핑을 보내면 튕기는 문제 수정
+- 네이트온 메시지, 아프리카 메시지 보기 기능 삭제
+- Optimizations
+
+# 3.34
+- EUD 맵에서 코드를 실행시킬 수 있는 보안 문제 재수정
+
+# 3.33
+- Fixed a security issue that allowed arbitrary code to run in EUD maps
+
+# 3.32
+- 플레이어 핵 사용 기록 보기 기능 수정
+
+# 3.31
+- 게임이 끝난 후 복구되는 데이터 영역 추가 (EUD 맵)
+
+# 3.30
+- 플레이어 핵 사용 기록 보기 기능 수정
+
+# 3.29 - 3.00
+- http://cafe.daum.net/wDetector/Fqmu/37
+
+
+* Features
+- Speed change function added #S1 ~ #S3
+- Speed change function added #X1 ~ #X5
+	Slowest = 167, Slower = 111, Slow = 83, Normal = 67, Fast = 56, Faster = 48, Fastest = 42,
+	#X1 = 42, #X2 = 31, #X3 = 21, #X4 = 11, #X5 = 1(fastest)
+- 방에서 기다릴 때 랙이 있는 플레이어들을 자동으로 알려줌
+- 방에서 기다릴 때 다른 윈도우 창을 보고 있어도 게임이 시작되면 카운트 다운 소리가 들림
+- 방 만들었을 때 슬롯 자동으로 닫기 (wDetector.ini의 AutoCloseSlots 옵션. 예를 들어 방 제목이 3:3이면 아래 2개의 슬롯이 닫힘)
+- Game refresh timer (You can press F5 to manually refresh the game)
+- Automatically refresh the game (AutoRefresh option from wDetector.ini. '+' key toggle during typing)
+- 방에 들어갈 수 없을 때 뜨는 오류 메시지 타이머를 6초에서 2초로 줄임 ("The latency to the game creator is too high." 메시지)
+- 플레이어가 NAT 환경인지 보여줌 (플레이어 리스트에 "NAT" 표시. 공유기를 사용한다고 보시면 됩니다)
+- 플레이어 리스트에 각 플레이어가 선택했던 종족을 보여줌 (랜덤, 테란, 저그, 프로)
+- 플레이어 리스트를 동맹군, 적군으로 나누어서 보여줌 (나누는 기준은 자신의 동맹 기준)
+- 플레이어 전적 보기 /stats 기능 (Alt + keypad 1~8. 빠르게 계속 누르면 배틀넷이 끊길 수 있음)
+- 플레이어 귓말 거부 /ignore 기능 (Win + keypad 1~8. 빠르게 계속 누르면 배틀넷이 끊길 수 있음)
+- Chat logs (keypad '+'. PageUp, PageDown )
+- Status of each player in Mission Briefing
+- 리플레이를 볼 때 각 플레이어가 선택했던 유닛이 보임
+- 무한 디스 감지 및 강제 드랍
+- User-defined word filtering feature(applies to Battle.net channels and whispers)
+	1. wDetectorFilter.txt 파일. 스타를 끄지 않고 수정해도 바로 적용됨.
+	2. 채널에서 /filter 단어1 단어2 단어3... 으로도 등록됨.
+	3. 채널에서 /filter까지만 입력하면 wDetectorFilter.txt 파일이 열림.
+	*. See description in wDetectorFilter.txt.
+- Ctrl Shortcuts
+	Ctrl + P : Player List (keypad '0')
+	Ctrl + N : Network List (keypad '.')
+	Ctrl + I : Announce hackers (keypad '9')
+	Ctrl + L : View chat logs (keypad '+')
+	Ctrl + D : Show/hide drop window 숨기기 (keypad '-')
+	Ctrl + O : Crash oblivion users (keypad '*')
+	Ctrl + T : Show/hide clock in-game (keypad '/')
+
+* 임시 제거
+- wDetector 채널에서 "강퇴 ID" 메시지를 5번 받으면 강퇴되는 기능
+- 상대방 개인 플레이 화면 보기 기능
+
+* 제거
+- 핵 사용자 괴롭히기 기능 (맵핑 보내기 기능, 동맹 변경 기능)
+- 1분마다 핵 사용자 체크 기능 (동맹 변경 기능)
+- 메신저 기능(네이트온, 아프리카)을 사용중인지 보여주던 것 (버전 옆에 M 뜨던 것)
+
+* 유지
+- F5: Refresh game
+- Ping view
+- APM counter
+- 재전송 요청 수 보여주기
+- Show who is uploading the map
+- Show map download status
+- 자동으로 전적 받아오기
+- /astat 명령어 막기 (방에 한꺼번에 들어왔을 때 배틀넷 끊김 방지)
+- 중복된 방 상태 변화 전송 막기 (방에 한꺼번에 들락날락거릴 때 배틀넷 끊김 방지)
+- Change latency (#L1 ~ #L5, #LL)
+- wDetector-only games (#W)
+- See other wDetector users
+- Dedicated wDetector channel
+- F6: Go to custom channel
+- F7, F8 friend follow
+- 배틀넷 광고 제목 방 필터링
+- Filter spam in Battle.net channels (duplicate messages, ID #'s, chat, message length)
+- wDetector 채널에서 욕 필터링
+- wDetector version check
+- Copy player username feature (Ctrl + keypad 1~8)
+- Automatically save replays (only for games >2 minutes)
+- Show/hide drop window
+- Disable Windows and F1 keys
+- 창모드에서 한글 깨짐 방지 (아쿠아, 미니 호환)
+- View NateOn, Afreeca messages
+- Automatically add StarCraft to Windows Firewall
+- 한글 윈도우에서만 사용 가능 (한글 윈도우가 아니어도 "나는 한국인"을 치면 풀림)
+- BMP screenshots
+- EUD Actions
+- WDP packet log
+- View player history
+- /whois [player] to detect spoofers
+- /dnd로 수신 거부 확인
+- Detect maphack(only on your computer)
+- Host hack detection
+- Nuke anywhere hack detection
+- Auto-mine and auto-build detection
+- 오토큐 핵 감지
+- Multicommand detection
+- Order buffer hack detection
+- New clear hack detection
+- New clear cancel hack detection
+- Rally point hack detection
+- Cheat hack detection
+- Drophack detection(packet validation, 0xFF packet, Pause, Leave)
+- Crash hack detection
+- Hacked latency detection
+- Hacked packet detection
+- Detect fake hack detectors
+- 부대 지정 사용 감지 (NoHK)
+- Announce hackers to other players (keypad 1~9)
+- Crash users of Oblivion 4.0.4 and higher
+- 핵이 로드되어 있는지 확인
+- 게임중 핵이 로드됐을 때 강제 종료
+- 자신이 핵을 쓰면 동맹 끊기
+- Debugging and crack prevention
+
+
+
+
+
+[Usage]
+
+1. Battle.net Channels
+
+*. Instructions
+
+  F2, F3, F4 : First, second, and third wDetector channels, respectively. (Pressing with Shift button will [...].)
+  F5 : Visit wDetector's website
+  Shift + F5 : View other [...] of wDetector
+  F6 : Move to the channel set in MyChannel1 from wDetector.ini. (Press with Shift button to go to MyChannel2 instead.)
+  F7 : Set up a friend's ID to follow. (You must type your friend's ID in chat first.)
+  F8 : Follow your friend to a game. (Press when your friend joins a game.)
+
+  /filter : You can add words to be filtered out in wDetectorFilter.txt
+
+
+
+2. Game lobby
+
+*. Instructions
+
+  F5 : Refreshes the game(only if you're the host).
+  Ctrl + keypad 1~8 : Copy player [1-8]'s username.
+  Alt + keypad 1~8 : Display player [1-8]'s stats. (/stats)
+  Win + keypad 1~8 : Ignore whispers from player [1-8]. (/ignore)
+  keypad '+' : Toggles automatic refreshing.
+
+
+
+3. In-game
+
+*. Instructions
+
+	keypad '0' : Player List (stats, winrate, APM, race, hackers) and more.
+	keypad '.' : Network List (IP, Ping, retransmission request frequency, packet information).
+	keypad '1~8' : Announce specific hacker(1-8) to all players.
+	keypad '9' : Announce hackers to all players.
+	Ctrl + keypad '0' : Record player list in replay.
+	Ctrl + keypad '1~8' : Copies the ID of player [1-8].
+	Alt + keypad '1~8' : Request player [1-8] to show his/her screen.
+	Win + keypad '1~8' : Ignore whispers from player [1-8]. (/ignore)
+	Ctrl + Alt + keypad '1~8' : Stop sharing/watching screen with player [1-8].
+	keypad '-' : Show/hide drop window.
+	keypad '*' : Crash oblivion users. (After pressing, do not give commands to units/buildings.)
+	keypad '/' : Show/hide time.
+	keypad '+' : Open/close chat log.
+	Ctrl + keypad '+' : Delete chat log.
+
+(If you change the UseFuncKey option to 1 in wDetector.ini,  F7, F8, F9, F11, and F12 keys can be used instead.)
+
+*. Alternative keys
+
+	Ctrl + P : Player List (keypad '0')
+	Ctrl + N : Network List (keypad '.')
+	Ctrl + I : Announce hackers (keypad '9')
+	Ctrl + L : View chat history (keypad '+')
+	Ctrl + D : Show/hide drop window (keypad '-')
+	Ctrl + O : Crash Oblivion users (keypad '*')
+	Ctrl + T : Show/hide time during the game (keypad '/')
+
+
+
+
+
+[Other]
+
+Homepage : http://www.wlauncher.com
+Created by : (wonsch6207@hanmail.net)
