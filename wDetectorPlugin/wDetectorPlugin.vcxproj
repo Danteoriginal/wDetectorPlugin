@@ -81,7 +81,7 @@
     <ClCompile Include="Inject.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="SeDebugPrivilege.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="wLog.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +93,6 @@
     <ClInclude Include="Process.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SeDebugPrivilege.h" />
-    <ClInclude Include="Source.h" />
     <ClInclude Include="wLog.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

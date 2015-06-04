@@ -30,7 +30,10 @@
 
 5. 한글 윈도우가 아니어도 되게 해주세요.
 
-This is to prevent foreigners from developing hacks to bypass wDetector. Starting with version 2.11, you must type "I am a Korean" in Hangul.
+핵 개발을 대부분 외국인들이 해서 wDetector가 외국인에게 사용되지 않았으면 하는 바람에서
+처음에는 한글 윈도우에서만 돌아가도록 만들었습니다.
+2.11버전부터는 게임중에 "나는 한국인"을 타이핑하면 한글 윈도우가 아니어도 wDetector가 동작하도록 수정하였습니다.
+단, 멀티플레이에서 방에 둘 이상이 있을 때 타이핑해야 동작합니다.
 
 
 
@@ -74,20 +77,24 @@ wDetector를 사용하지 않았어도 일어날 상황입니다.
 
 
 
-11. There is a virus in wDetector
+11. wDetector에서 바이러스가 있다고 나와요.
 
-The file is packed to prevent debugging by hackers, there is no virus in wDetector.
-
-
-
-12. Maphack is not detected
-
-Maphack has evolved a lot.
+패킹된 실행 파일을 바이러스로 잡아버리는 백신이 많이 있습니다.
+주로 Crack이나 KeyGen이나 여러 가지 핵들이 디버깅을 방지하기 위해서 실행 파일에 패킹을 합니다.
+wDetector에 바이러스 없습니다. -_- (홈페이지 아닌 다른 사이트에서 받은 것 제외)
 
 
 
-13. Where can I get wDetector
+12. 맵핵은 감지 안 되나요.
 
-http://www.wlauncher.com is the homepage.
-wDetector is included as a plugin in wLauncher.
-Please install wLauncher to use wDetector plugin.
+맵핵도 많이 발전했습니다. 안 보이는 건물을 클릭하는 건 이제 잡히지도 않습니다.
+안 보이는 건물을 클릭해도 상대방에겐 클릭 안 한 걸로 되어 감지가 안 됩니다.
+맵핵이다라고 판단할만한 특징이 없습니다.
+
+
+
+13. wDetector 어디서 받나요.
+
+http://www.wlauncher.com 여기가 홈페이지입니다.
+wDetector는 wLauncher의 플러그인으로 포함되어 있습니다.
+wLauncher를 설치하시면 wDetector 플러그인을 사용하실 수 있습니다.

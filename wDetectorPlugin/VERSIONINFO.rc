@@ -14,8 +14,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,0
- PRODUCTVERSION 1,0,0,0
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
  FILEFLAGSMASK 0x0L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -32,11 +32,11 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "xboi209"
             VALUE "FileDescription", "wDetector Plugin for third-party launchers"
-            VALUE "FileVersion", "1.0.0.0"
+            VALUE "FileVersion", "1.0.0.1"
             VALUE "InternalName", "wDetector Plugin"
             VALUE "OriginalFilename", "wDetectorPlugin.bwl"
             VALUE "ProductName", "wDetector Plugin"
-            VALUE "ProductVersion", "1.0"
+            VALUE "ProductVersion", "1.0.0.1"
         END
     END
     BLOCK "VarFileInfo"

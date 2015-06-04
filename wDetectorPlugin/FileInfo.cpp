@@ -1,34 +1,56 @@
+/*
+*	wDetector plugin for Chaoslauncher, activates and translates wDetector
+*	Copyright (C) 2015  xboi209 xboi209@gmail.com
+*
+*	This program is free software: you can redistribute it and/or modify
+*	it under the terms of the GNU General Public License as published by
+*	the Free Software Foundation, either version 3 of the License, or
+*	(at your option) any later version.
+*
+*	This program is distributed in the hope that it will be useful,
+*	but WITHOUT ANY WARRANTY; without even the implied warranty of
+*	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*	GNU General Public License for more details.
+*
+*	You should have received a copy of the GNU General Public License
+*	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#include <cwchar>
 #include <Windows.h>
 #include "FileInfo.h"
 
-int PrintFileVersion(const wchar_t* pszFilePath)
+wchar_t * FileVersion(const wchar_t* pszFilePath)
 {
-	DWORD               dwSize = 0;
-	BYTE                *pbVersionInfo = NULL;
-	VS_FIXEDFILEINFO    *pFileInfo = NULL;
-	UINT                puLenFileInfo = 0;
-	int version = 0;
+	DWORD  verHandle = NULL;
+	UINT   size = 0;
+	LPBYTE lpBuffer = NULL;
+	DWORD  verSize = GetFileVersionInfoSize(pszFilePath, &verHandle);
+	static wchar_t buff[30] = L"";
 
-	// get the version info for the file requested
-	dwSize = GetFileVersionInfoSizeW(pszFilePath, NULL);
-	if (dwSize == 0)
-		return version;
-
-	pbVersionInfo = new BYTE[dwSize];
-
-	if (GetFileVersionInfoW(pszFilePath, 0, dwSize, pbVersionInfo) == 0)
+	if (verSize != NULL)
 	{
-		delete[] pbVersionInfo;
-		return version;
+		LPSTR verData = new char[verSize];
+
+		if (GetFileVersionInfo(pszFilePath, verHandle, verSize, verData))
+		{
+			if (VerQueryValue(verData, L"\\", (VOID FAR* FAR*)&lpBuffer, &size))
+			{
+				if (size)
+				{
+					VS_FIXEDFILEINFO *verInfo = (VS_FIXEDFILEINFO *)lpBuffer;
+					if (verInfo->dwSignature == 0xfeef04bd)
+					{
+						swprintf(buff, sizeof(buff), L"%d.%d",
+							(verInfo->dwFileVersionMS >> 16) & 0xffff,
+							(verInfo->dwFileVersionLS >> 16) & 0xffff
+							);
+					}
+				}
+			}
+		}
+		delete[] verData;
 	}
 
-	if (VerQueryValueW(pbVersionInfo, L"\\", (LPVOID*)&pFileInfo, &puLenFileInfo) == 0)
-	{
-		delete[] pbVersionInfo;
-		return version;
-	}
-
-	delete[] pbVersionInfo;
-	version = (pFileInfo->dwFileVersionLS >> 16) & 0xff;
-	return version;
+	return buff;
 }

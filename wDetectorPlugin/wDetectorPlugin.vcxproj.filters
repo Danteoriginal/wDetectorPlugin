@@ -13,31 +13,25 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Header">
-      <UniqueIdentifier>{6ed6571d-f9ae-4147-b0c1-36956f81a9ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Source">
-      <UniqueIdentifier>{f631976d-0a6a-416f-aafc-d450c87b0fb7}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SeDebugPrivilege.cpp">
-      <Filter>Source Files\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source.cpp">
-      <Filter>Source Files\Source</Filter>
+    <ClCompile Include="FileInfo.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Inject.cpp">
-      <Filter>Source Files\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="wLog.cpp">
-      <Filter>Source Files\Source</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Process.cpp">
-      <Filter>Source Files\Source</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FileInfo.cpp">
-      <Filter>Source Files\Source</Filter>
+    <ClCompile Include="SeDebugPrivilege.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wLog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -49,23 +43,20 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source.h">
-      <Filter>Source Files\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="SeDebugPrivilege.h">
-      <Filter>Source Files\Header</Filter>
+    <ClInclude Include="FileInfo.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Inject.h">
-      <Filter>Source Files\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="wLog.h">
-      <Filter>Source Files\Header</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Process.h">
-      <Filter>Source Files\Header</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FileInfo.h">
-      <Filter>Source Files\Header</Filter>
+    <ClInclude Include="SeDebugPrivilege.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="wLog.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
