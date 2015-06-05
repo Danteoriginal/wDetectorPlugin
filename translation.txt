@@ -9,4 +9,5 @@ Note: Some strings may be shortened because of no available memory
 0x43C94 - "enabled"
 0x43C8C - "disable"
 0x41B7C	- "ago"
-0x41B74	-	"min"
+0x41B74	- "min"
+0x41B78 - "sec"
