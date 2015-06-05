@@ -1,15 +1,47 @@
 wDetector 3.35 Offsets
-Note: Some strings may be shortened because of no available memory
-		All strings MUST be null-terminated, undefined behavior otherwise.
+Note:	Some strings may be shortened because of no available memory
+	All strings MUST be null-terminated, undefined behavior otherwise.
+Format:	Offset
+	Reference byte array(including surrounding bytes for easier searching)
+	New value(starting at the offset)
 ----------------------------------------------------------------------------------------------------
 
-0x5AD94	- Activation { 0x12 }
-0x429C4 - "<wDetector 3.35 - Refreshing>"
-0x43C9D - "자동 방 새로고침"
-0x43C94 - "enabled"
-0x43C8C - "disable"
-0x41B7C	- "ago"
-0x41B74	- "min"
-0x41B78 - "sec"
-0x41AA0 - " min %u sec"
-0x418C3 - "Players Ready"
+0x5AD94
+00 03 00 00 00 09 04 00 00
+{ 0x12 }
+
+0x429C4
+3C 77 44 65 74 65 63 74 6F 72 2E 20 33 2E 33 35
+"<wDetector 3.35 - Refreshing>"
+
+0x43C9D
+00 00 03 C0 DA B5 BF 20 B9 E6 20 BB F5 B7 CE B0 ED C4
+"자동 방 새로고침"
+
+0x43C94
+04 C4 D1 B1 E2 00 00 00 03 C0 DA B5 BF 20 B9 E6
+"enabled"
+
+0x43C8C
+00 00 05 B2 F4 B1 E2 00 00 00
+"disable"
+
+0x41B7C
+00 C1 F6 B3 B2 00 00 00
+"ago"
+
+0x41B74
+00 00 00 BA D0 00
+"min"
+
+0x41B78
+00 C3 CA 00 00
+"sec"
+
+0x41AA0
+BA D0 20 25 75 C3 CA 20 C1 F6 B3
+" min %u sec"
+
+0x418C3
+2D 20 C7 C3 B7 B9 C0 CC BE EE 20 C1 D8 BA F1 00
+"Players Ready"
