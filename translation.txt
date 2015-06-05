@@ -1,7 +1,9 @@
 wDetector 3.35 Offsets
+Note: Some strings may be shortened because of no available memory
 ----------------------------------------------------------------------------------------------------
 
 0x5AD94	- Activation { 0x12 }
 0x429C4 - "<wDetector 3.35 - Refreshing>"
 0x43C9D - "자동 방 새로고침"
 0x43C94 - "enabled"
+0x43C8C - "disable"
