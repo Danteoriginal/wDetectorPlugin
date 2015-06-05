@@ -11,3 +11,4 @@ Note: Some strings may be shortened because of no available memory
 0x41B7C	- "ago"
 0x41B74	- "min"
 0x41B78 - "sec"
+0x41AA0 - " min %u sec"
