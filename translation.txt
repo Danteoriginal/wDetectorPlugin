@@ -70,9 +70,9 @@ C0 DA B5 BF 20 B9 E6 20 BB F5 B7 CE B0 ED C4 A7
 ??
 "3 minutes passed)"
 
-0x429C8
+0x429C7
 ??
-"seconds until refreshing."
+" seconds until refreshing."
 
 0x41C0B
 BF F8 BC F8

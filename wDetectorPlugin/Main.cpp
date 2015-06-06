@@ -174,18 +174,18 @@ extern "C" __declspec(dllexport) bool ApplyPatch(HANDLE hProcess, DWORD dwProces
 		0x429E4,		//Refresh game message
 		0x43CB4,		//toggle automatic refresh - enable
 		0x43CAC,		//toggle automatic refresh - disable
-		0x41B7C,	//ago
-		0x41B74,	//min
-		0x41B78,	//sec
-		0x41AA0,
-		0x418C3,	//mission briefing
-		0x43D93,	//time off
-		0x43D83,	//time on
+		0x41B8C,	//ago
+		0x41B84,	//min
+		0x41B88,	//sec
+		0x41AB0,
+		0x418D3,	//mission briefing
+		0x43DB3,	//time off
+		0x43DA3,	//time on
 		0x43CBD,	//toggle automatic refresh
-		0x4297D,	//Automatic game refresh disable
-		0x4299F,	//3 minutes passed)
-		0x429C8,	//seconds until refreshing.
-		0x41C0B
+		0x4297D,	//Automatic game refresh disable -msg after 3 mins
+		0x4299F,	//3 minutes passed) -msg after 3 mins
+		0x429C7,	//F5 - seconds until refreshing.
+		0x41C0B		//English
 	};
 
 	std::array<std::string, 15> vals = {
@@ -200,11 +200,10 @@ extern "C" __declspec(dllexport) bool ApplyPatch(HANDLE hProcess, DWORD dwProces
 		"Time off",
 		"Time on",
 		"Automatic refresh %s", //toggle automatic refresh
-		"Automatic game refresh disable" //msg after 3 mins
+		"Automatic game refresh disable", //msg after 3 mins
 		"3 minutes passed)", //msg after 3 mins
-		"seconds until refreshing.", //F5
+		" seconds until refreshing.", //F5
 		"English"
-
 	};
 
 	{
