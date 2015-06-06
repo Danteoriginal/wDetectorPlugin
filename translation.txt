@@ -10,13 +10,13 @@ Format:	Offset
 00 03 00 00 00 09 04 00 00
 { 0x12 }
 
-0x43CBA
-3C 77 44 65 74 65 63 74 6F 72 2E 20 33 2E 33 35
+0x429E4
+3C 77 44 65 74 65 63 74 6F 72 2E 20 33 2E 33
 "<wDetector 3.35 - Refreshing>"
 
 0x43CBD
 00 00 03 C0 DA B5 BF 20 B9 E6 20 BB F5 B7 CE B0 ED C4
-"Refreshing"
+"Automatic refresh"
 
 0x43CB4
 C4 D1 B1 E2
