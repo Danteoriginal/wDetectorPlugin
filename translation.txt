@@ -1,6 +1,6 @@
 wDetector 3.35 Offsets
 Note:	Some strings may be shortened because of no available memory
-	All strings MUST be null-terminated, undefined behavior otherwise.
+	All strings MUST be null-terminated(unless a byte follows the string), undefined behavior otherwise.
 Format:	Offset
 	Reference byte array(including surrounding bytes for easier searching)
 	New value(starting at the offset)
@@ -48,8 +48,20 @@ BA D0 20 25 75 C3 CA 20 C1 F6 B3
 
 0x43CCA
 B5 E5 B6 F8 C3 A2 20 BC FB B1 E2 B1 E2
-"Drop screen off" + { 0x0A } + "Do NOT control any units/buildings"
+"Drop screen off" + { 0x0A } + "Do NOT control any units/buildings!     "
 
 0x43CB6
 
-"Drop screen on" + { 0x0A }
+"Drop screen on" + { 0x0A } + { 0x08 } + "Actions may be detected as hacks!"
+
+0x43D93
+BD C3 B0 E8 20 BA B8 C0 CC B1 E2
+"Time off"
+
+0x43D83
+BD C3 B0 E8 20 BA B8
+"Time on"
+
+0x43C9D
+C0 DA B5 BF 20 B9 E6 20 BB F5 B7 CE B0 ED C4 A7 
+"Automatic refresh %s"
