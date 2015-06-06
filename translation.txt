@@ -61,3 +61,11 @@ BD C3 B0 E8 20 BA B8
 0x43CBD
 C0 DA B5 BF 20 B9 E6 20 BB F5 B7 CE B0 ED C4 A7
 "Automatic refresh %s"
+
+0x4297D
+??
+"Automatic game refresh disabled" + { 0x20 }
+
+0x4299F
+??
+"3 minutes passed)"
