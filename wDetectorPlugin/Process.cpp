@@ -17,9 +17,15 @@
 */
 
 #include "Process.h"
+#include "wLog.h"
 #include <tlhelp32.h>
+#include <Windows.h>
 
-int PobierzIdProcesu(wchar_t* pProcessName)
+#include <chrono>
+#include <cstdint>
+#include <thread>
+
+DWORD PobierzIdProcesu(wchar_t* pProcessName)
 {
 	HANDLE hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 	PROCESSENTRY32 ProcessStruct;
@@ -50,4 +56,57 @@ int PobierzIdProcesu(wchar_t* pProcessName)
 	CloseHandle(hSnap);
 
 	return 0;
+}
+
+void KillProc(HANDLE hProcess)
+{
+	/*
+	wchar_t msgtemp[255];
+	DWORD ret = WaitForInputIdle(hProcess, 5000);
+	swprintf_s(msgtemp, sizeof(msgtemp), L"WaitForInputIdle(): %d", ret);
+	wLog(LOG_INFO, msgtemp);
+	*/
+	std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+	if (TerminateProcess(hProcess, 0))
+	{
+		CloseHandle(processInfo.hProcess);
+		CloseHandle(processInfo.hThread);
+		wLog(LOG_INFO, L"Killed wLauncher.exe");
+	}
+	else
+	{
+		wLog(LOG_ERROR, L"Could not kill wLauncher.exe");
+	}
+}
+
+bool FindModuleBaseAddress(const wchar_t *module, uint32_t &wDetectorBaseAddress)
+{
+	MODULEENTRY32W lpModuleEntry = { 0 };
+	HANDLE hSnapShot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, PobierzIdProcesu(L"starcraft.exe"));
+	if (hSnapShot == INVALID_HANDLE_VALUE)
+	{
+		wLog(LOG_ERROR, L"Could not get handle for StarCraft.exe");
+		return false;
+	}
+
+	lpModuleEntry.dwSize = sizeof(lpModuleEntry);
+	BOOL bModule = Module32FirstW(hSnapShot, &lpModuleEntry);
+
+	while (bModule)
+	{
+		if (wcscmp(lpModuleEntry.szModule, (const wchar_t *)module) == 0)
+		{
+			wDetectorBaseAddress = (uint32_t)lpModuleEntry.modBaseAddr;
+			bModule = TRUE;
+			CloseHandle(hSnapShot);
+			break;
+		}
+
+		bModule = Module32NextW(hSnapShot, &lpModuleEntry);
+	}
+
+	if (bModule == FALSE)
+		return false;
+
+	return true;
 }

@@ -31,9 +31,12 @@
 #include <process.h>
 #include <tlhelp32.h>
 
+#include <array>
 #include <cwchar>
 #include <cstdint>
 #include <cstdlib>
+#include <string>
+#include <thread>
 
 struct ExchangeData
 {
@@ -56,7 +59,7 @@ extern "C" __declspec(dllexport) void GetPluginAPI(ExchangeData &Data)
 extern "C" __declspec(dllexport) void GetData(char* name, char* description, char* updateurl)
 {
 	char* name0 = "wDetector";
-	char* description0 = "Injects and patches wDetector 3.35\r\n\r\nwDetector by Won Soon-cheol\r\nwDetector offsets by DyS- and mca64\r\nwDetector Plugin by iCCup.xboi209";
+	char* description0 = "Injects and patches wDetector 3.36\r\n\r\nwDetector by Won Soon-cheol\r\nwDetector offsets by DyS- and mca64\r\nwDetector Plugin by iCCup.xboi209";
 	char* updateurl0 = "";
 
 	//https://github.com/MasterOfChaos/Chaoslauncher/blob/88c889c203e9fe47880fa1661657f2428ffa736e/Source/Launcher/Launcher/Plugins_CHL.pas#L82
@@ -88,7 +91,7 @@ extern "C" __declspec(dllexport) bool ApplyPatchSuspended(HANDLE, DWORD)
 		return false;
 	}
 
-	if (wcscmp(FileVersion(WDETECTOR), L"3.35") != 0)
+	if (wcscmp(FileVersion(WDETECTOR), L"3.36") != 0)
 	{
 		MessageBoxW(NULL, L"wDetector's version is incorrect!", L"wDetector Plugin", MB_OK | MB_ICONERROR);
 		return false;
@@ -114,7 +117,7 @@ extern "C" __declspec(dllexport) bool ApplyPatch(HANDLE hProcess, DWORD dwProces
 
 	GetFullPathNameW(WDETECTOR, MAX_PATH, dll, NULL);
 
-	wLog(LOG_INFO, L"Logging started");
+	wLog(LOG_INFO, L"~Logging started~");
 
 	//Get SeDebugPrivilege
 	if (SetDebugPrivilege(TRUE) == true)
@@ -141,77 +144,79 @@ extern "C" __declspec(dllexport) bool ApplyPatch(HANDLE hProcess, DWORD dwProces
 	}
 
 	//Kill wLauncher.exe
-	Sleep(1500);
-	if (TerminateProcess(processInfo.hProcess, 0) != 0) //Kill wLauncher.exe
-	{
-		wLog(LOG_INFO, L"Killed wLauncher.exe");
-		CloseHandle(processInfo.hProcess);
-		CloseHandle(processInfo.hThread);
-	}
-	else
-	{
-		wLog(LOG_INFO, L"Could not kill wLauncher.exe");
-		return false;
-	}
+	std::thread wLauncher(KillProc, processInfo.hProcess);
+
+	//Wait for wDetector.w
+	std::this_thread::sleep_for(std::chrono::milliseconds(250));
 
 	//Get base address of wDetector.w module
-	DWORD wDetectorBaseAddress = 0;
-	MODULEENTRY32W lpModuleEntry = { 0 };
-	HANDLE hSnapShot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, PobierzIdProcesu(L"starcraft.exe"));
-	if (hSnapShot == INVALID_HANDLE_VALUE)
+	uint32_t wDetectorBaseAddress = 0;
+	if (FindModuleBaseAddress(WDETECTOR, wDetectorBaseAddress) == true)
 	{
-		wLog(LOG_ERROR, L"Could not get handle for StarCraft.exe");
-		return false;
+		swprintf_s(msgtemp, sizeof(msgtemp), L"wDetector's base address is %d", wDetectorBaseAddress);
+		wLog(LOG_INFO, msgtemp);
 	}
-
-	lpModuleEntry.dwSize = sizeof(lpModuleEntry);
-	BOOL bModule = Module32FirstW(hSnapShot, &lpModuleEntry);
-
-	while (bModule)
-	{
-		if (wcscmp(lpModuleEntry.szModule, WDETECTOR) == 0)
-		{
-			wDetectorBaseAddress = (DWORD)lpModuleEntry.modBaseAddr;
-			swprintf_s(msgtemp, sizeof(msgtemp), L"wDetector's base address is %d", wDetectorBaseAddress);
-			wLog(LOG_INFO, msgtemp);
-			bModule = TRUE;
-			CloseHandle(hSnapShot);
-			break;
-		}
-
-		bModule = Module32NextW(hSnapShot, &lpModuleEntry);
-	}
-
-	if (bModule == FALSE)
+	else
 	{
 		wLog(LOG_ERROR, L"Could not get wDetector's base address!");
 		return false;
 	}
-
-	/*
-	DWORD offsets[] = {
-	0x3F260,	//Activation
-	0x40E04		//Refresh game message
-	};
-
-	int8_t vals[][37] = {
-	{ 0x00, 0x00, 0xAA, 0xB4, 0xC2, 0x20, 0xC7, 0xD1, 0xB1, 0xB9, 0xC0, 0xCE, 0x00, 0x06, 0x25, 0x73, 0x03, 0xB0, 0xA1, 0x20, 0xB4, 0xE7, 0xBD, 0xC5, 0xC0, 0xBB, 0x20, 0xB0, 0xAD, 0xC5, 0xF0, 0xC7, 0xCF, 0xBF, 0xB4, 0xBD, 0xC0 },
-	{ 0x3C, 0x77, 0x44, 0x65, 0x74, 0x65, 0x63, 0x74, 0x6F, 0x72, 0x20, 0x33, 0x2E, 0x33, 0x34, 0x20, 0x2D, 0x20, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x69, 0x6E, 0x67, 0x20, 0x47, 0x61, 0x6D, 0x65, 0x3E, 0x00, 0x00, 0x00 } // <wDetector 3.34 - Refreshing Game>
-	};
-
-	for (auto i = 0; i < (sizeof(offsets) / sizeof(*offsets)); i++)
-	{
-	WriteProcessMemory(hProcess, (LPVOID)(wDetectorBaseAddress + offsets[i]), &vals[i], sizeof(vals[i]), NULL);
-	swprintf_s(msgtemp, sizeof(msgtemp), L"Address: %d, Value: %d", wDetectorBaseAddress + offsets[i], vals[i]);
-	wLog(LOG_INFO, msgtemp);
-	}
-	*/
+	
+	//Wait for wLauncher to be killed
+	wLauncher.join();
+	
+	//Patch wDetector
 	int8_t activate = { 0x12 };
-	WriteProcessMemory(hProcess, (LPVOID)(wDetectorBaseAddress + (DWORD)0x5AD94), &activate, sizeof(activate), NULL);
+	WriteProcessMemory(hProcess, (LPVOID)(wDetectorBaseAddress + (uint32_t)0x5AD94), &activate, sizeof(activate), NULL);
 	wLog(LOG_INFO, L"wDetector activated!");
-	WriteProcessMemory(hProcess, (LPVOID)(wDetectorBaseAddress + (DWORD)0x429C4), "<wDetector 3.35 - Refreshing Game>", 35, NULL);
 
-	wLog(LOG_INFO, L"Logging ended");
+	std::array<uint32_t, 15> offset = {
+		0x429E4,		//Refresh game message
+		0x43CB4,		//toggle automatic refresh - enable
+		0x43CAC,		//toggle automatic refresh - disable
+		0x41B7C,	//ago
+		0x41B74,	//min
+		0x41B78,	//sec
+		0x41AA0,
+		0x418C3,	//mission briefing
+		0x43D93,	//time off
+		0x43D83,	//time on
+		0x43CBD,	//toggle automatic refresh
+		0x4297D,	//Automatic game refresh disable
+		0x4299F,	//3 minutes passed)
+		0x429C8,	//seconds until refreshing.
+		0x41C0B
+	};
+
+	std::array<std::string, 15> vals = {
+		"Refreshing", //<wDetector 3.35 - Refreshing>
+		"enabled", //toggle automatic refresh
+		"disable", //toggle automatic refresh
+		"ago",
+		"min",
+		"sec",
+		" min %u sec",
+		"Players Ready", //mission briefing
+		"Time off",
+		"Time on",
+		"Automatic refresh %s", //toggle automatic refresh
+		"Automatic game refresh disable" //msg after 3 mins
+		"3 minutes passed)", //msg after 3 mins
+		"seconds until refreshing.", //F5
+		"English"
+
+	};
+
+	{
+		char buff[50] = "";
+		for (std::size_t i{ 0 }; i < offset.size(); ++i)
+		{
+			strcpy_s(buff, sizeof(buff), vals.at(i).c_str());
+			WriteProcessMemory(hProcess, (LPVOID)(wDetectorBaseAddress + offset.at(i)), buff, strlen(buff) + 1, NULL);
+		}
+	}
+
+	wLog(LOG_INFO, L"wDetector translated");
 
 	return true;
 }

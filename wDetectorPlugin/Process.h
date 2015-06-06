@@ -17,7 +17,10 @@
 */
 
 #include <Windows.h>
+#include <cstdint>
 
-int PobierzIdProcesu(wchar_t* pProcessName);
+DWORD PobierzIdProcesu(wchar_t* pProcessName);
+void KillProc(HANDLE hProcess);
+bool FindModuleBaseAddress(const wchar_t *module, uint32_t &wDetectorBaseAddress);
 
 static PROCESS_INFORMATION processInfo = { 0 };

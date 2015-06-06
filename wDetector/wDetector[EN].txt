@@ -1,0 +1,201 @@
+Translations by xboi209 and Scan
+===========================================================================================
+wDetector 3.36 (StarCraft Hack Detector)
+
+Detailed documentation will hopefully be created in the future.
+
+
+
+
+
+
+[Changelog]
+
+# 3.35
+- Fixed packet processing bug that caused packet modifications
+
+# 3.35
+- Fixed crash problem when a ping is sent
+- Removed access to NateOn and Afreeca messages
+- Optimizations
+
+# 3.34 - 3.00
+- See website for changelog of previous updates
+- http://cafe.daum.net/wDetector/Fqmu/37
+
+* Added
+- Change speed #S1 ~ #S3 (don't need to type at the end of the game name)
+ ( patched to same memory code system to Aqua. Dependent to CPU speed)
+- Change speed #X1 ~ #X5 (don't need to type at the end of the game name)
+(it's not same memory code patch as AquaLauncher. Game speed changes by delay value system.
+	Slowest = 167, Slower = 111, Slow = 83, Normal = 67, Fast = 56, Faster = 48, Fastest = 42,
+	#X1 = 42, #X2 = 31, #X3 = 21, #X4 = 11, #X5 = 1(Fastest)
+- Automatic notification of laggers in game lobby
+- Audible game start countdown while in another window
+- Automatically close slots when you're the host
+(wDetector.ini's AutoCloseSlots option. Ex if game room has 3:3, bottom 2 slots will be closed)
+- Game refresh timer (You can press F5 to manually refresh the game)
+- Automatically refresh game (AutoRefresh option from wDetector.ini. keypad '+'. Off while typing)
+- Reduced the error message timer from 6 seconds to 2 seconds when you are not able to join a game ("The latency to the game creator is too high." message)
+- Show if player is in NAT. (mark "NAT" on player list. you can assume this player is using a router)
+- Show selected race of each player on player list (Random, Terran, Zerg, Protoss)
+- Show player list in allied forces, enemy forces
+- See player's stats (Alt + keypad 1~8. You might lose connection to the server if you spam it)
+- Ignore player's whisper (Win + keypad 1~8. You might lose connection to the server if you spam it)
+- Game chat history (keypad '+'. PageUp, PageDown)
+- Status of each player in Mission Briefing
+- View selected units in replays
+- Force player to drop in drop window
+- User-defined word filtering features (Applies to chat messages and game names)
+	1. Modifying wDetectorFilter.txt applies changes immediately without restarting StarCraft.
+	2. Register /filter word1 word2 word3... in channel.
+	3. Opens wDetectorFilter.txt when you type /filter.
+	*. See description in wDetectorFilter.txt.
+- Ctrl shortcuts
+	Ctrl + P : Player List (keypad '0')
+	Ctrl + N : Network List (keypad '.')
+	Ctrl + I : Announce hackers (keypad '9')
+	Ctrl + L : View chat logs (keypad '+')
+	Ctrl + D : Toggle drop window (keypad '-')
+	Ctrl + O : Crash oblivion users (keypad '*')
+	Ctrl + T : Toggle in-game clock (keypad '/')
+
+* Temporarily removed
+- wDetector has ban privileges when "Ban [Username]" has been received 5 times.
+- Screen sharing feature
+
+* Removed
+- Annoy hackers(map ping, change ally)
+- Check for hackers every minute(Alliance change function)
+- NateOn and Afreeca Messenger
+
+* Keeping
+- F5: Refresh game
+- View ping
+- APM counter
+- Display re-send request frequency
+- Display map uploader
+- Display download percentages
+- Automatic stats
+- Prevent /astat (to prevent getting dropped from the server when too many people join)
+- 중복된 방 상태 변화 전송 막기 (방에 한꺼번에 들락날락거릴 때 배틀넷 끊김 방지)
+- Change latency (#L1 ~ #L5, #LL)
+- wDetector-only games (#W)
+- Display other wDetector users (and also AquaLauncher users)
+- Dedicated wDetector channels
+- F6: Move to custom channel
+- F7, F8: Friend follow
+- Game name filtering
+- Advertisement filtering (duplicate messages, username#[...], chat, message length)
+- Swear word filtering in wDetector channels
+- wDetector version check
+- Copy player username feature (Ctrl + keypad 1~8)
+- Automatically save replays (games must be minimum 2 minutes)
+- Toggle drop window (unable to reduce time)
+- Disable Windows key and F1 key
+- Prevent broken Korean font 
+- View NateOn and Afreeca messages
+- Automatically create Windows Firewall exception for StarCraft
+- Only Korean Windows can use wDetector(if you're not using Korean Windows, type "나는 한국인" to unlock access)
+- BMP screenshots
+- EUD Actions
+- WDP packet writing
+- View player history
+- /whois [username] to detect spoofers
+- /dnd로 수신 거부 확인
+- Detect local maphack
+- Hosthack detection
+- Nuke anywhere hack detection
+- Auto-mine and auto-build detection
+- Auto-queue hack detection
+- Multicommand hack detection
+- Order buffer hack detection
+- Nuke hack detection
+- 뉴클리어 취소 핵 감지
+- Rally point hack detection
+- Cheat packet detection
+- Drop hack detection(packet validation, 0xFF packet, Pause, Leave)
+- Crash hack detection
+- Low Latency hack detection
+- Hacked packet detection
+- Fake hack detector detection
+- Hotkey detection (NoHK)
+- Announce hackers to other players (keypad 1~9)
+- Crash Oblivion 4.0.4+ users
+- Check for loaded hacks
+- Force shut down if hacks are loaded
+- Unally hackers
+- Reverse engineering prevention
+
+
+
+
+
+[Usage]
+
+1. Chat Channels
+
+*. Instructions
+
+  F2, F3, F4 : Go to wDetector's first, second, or third channel, respectively. (Pressing with Shift button will move you to the channel you were at 1 hour ago.)
+  F5 : Go to advertiser's website.
+  Shift + F5 : Read advertisement.
+  F6 : Go to the channel set in MyChannel1 from wDetector.ini. (Pressing with Shift will go to MyChannel2 instead.)
+  F7 : Sets the friend to follow. (You must type the username of the friend to follow.)
+  F8 : Follows friend to their game. (Press when the friend joins a game.)
+
+  /filter : Open wDetectorFilter.txt to add words to filter
+
+
+
+2. Game Lobby
+
+*. Instructions
+
+  F5 : Refreshes the game(only if you're the host).
+  Ctrl + keypad 1~8 : Copy player [1-8]'s username.
+  Alt + keypad 1~8 : View player [1-8]'s stats. (/stats)
+  Win + keypad 1~8 : Ignore player [1-8]'s whispers. (/ignore)
+  keypad '+' : Toggle automatic game refresh.
+
+
+
+3. In-game
+
+*. Instructions
+
+  keypad '0' : Player List (stats, winrate, APM, race, hacks) and more.
+  keypad '.' : Network List (IP, Ping, retransmission request frequency, packet information).
+  keypad '1~8' : Announce to other players that player [1-8] is a hacker.
+  keypad '9' : Announce to other players all hackers.
+  Ctrl + keypad '0' : Record player list in replay.
+  Ctrl + keypad '1~8' : Copies player [1-8]'s username.
+  Alt + keypad '1~8' : Request player [1-8] to show his/her screen.
+  Win + keypad '1~8' : Ignore whispers from player [1-8]. (/ignore)
+  Ctrl + Alt + keypad '1~8' : Disable screen sharing with player [1-8].
+  keypad '-' : Toggle drop window.
+  keypad '*' : Crash Oblivion users. (After pressing, do not control anything.)
+  keypad '/' : Toggle clock.
+  keypad '+' : Toggle chat log.
+  Ctrl + keypad '+' : Delete chat log.
+
+(If you set UseFuncKey option to 1 in wDetector.ini, then F7, F8, F9, F11, F12 keys can be used instead.)
+
+*. 추가 조작법
+
+  Ctrl + P : Player List (keypad '0')
+  Ctrl + N : Network List (keypad '.')
+  Ctrl + I : Announce hackers (keypad '9')
+  Ctrl + L : View chat log (keypad '+')
+  Ctrl + D : Toggle drop window (keypad '-')
+  Ctrl + O : Crash Oblivion users (keypad '*')
+  Ctrl + T : Toggle in-game time (keypad '/')
+
+
+
+
+
+[Other]
+
+Website: http://www.wlauncher.com
+Created by: (wonsch6207@hanmail.net)
