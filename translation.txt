@@ -45,3 +45,11 @@ BA D0 20 25 75 C3 CA 20 C1 F6 B3
 0x418C3
 2D 20 C7 C3 B7 B9 C0 CC BE EE 20 C1 D8 BA F1 00
 "Players Ready"
+
+0x43CCA
+B5 E5 B6 F8 C3 A2 20 BC FB B1 E2 B1 E2
+"Drop screen off" + { 0x0A } + "Do NOT control any units/buildings"
+
+0x43CB6
+
+"Drop screen on" + { 0x0A }
