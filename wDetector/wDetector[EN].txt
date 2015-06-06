@@ -1,6 +1,6 @@
 Translations by xboi209 and Scan
 ===========================================================================================
-wDetector 3.35 (StarCraft Hack Detector)
+wDetector 3.36 (StarCraft Hack Detector)
 
 Detailed documentation will hopefully be created in the future.
 
@@ -10,6 +10,9 @@ Detailed documentation will hopefully be created in the future.
 
 
 [Changelog]
+
+# 3.36
+- Fixed packet processing bug that caused packet modifications
 
 # 3.35
 - Fixed crash problem when a ping is sent
