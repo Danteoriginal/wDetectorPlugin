@@ -1,0 +1,79 @@
+wDetector 3.36 Offsets
+Note:	Some strings may be shortened because of no available memory
+	All strings MUST be null-terminated(unless a byte follows the string), undefined behavior otherwise.
+Format:	Offset
+	Reference byte array(may include surrounding bytes for easier searching)
+	New value(starting at the offset)
+----------------------------------------------------------------------------------------------------
+
+0x5AD94
+00 03 00 00 00 09 04 00 00
+{ 0x12 }
+
+0x429E4
+3C 77 44 65 74 65 63 74 6F 72 2E 20 33 2E 33
+"<wDetector 3.35 - Refreshing>"
+
+0x43CB4
+C4 D1 B1 E2
+"enabled"
+
+0x43CAC
+B2 F4 B1 E2
+"disable"
+
+0x41B8C
+C1 F6 B3 B2 00
+"ago"
+
+0x41B84
+00 00 00 BA D0 00
+"min"
+
+0x41B88
+00 C3 CA 00 00
+"sec"
+
+0x41AB0
+BA D0 20 25 75 C3 CA 20 C1 F6 B3
+" min %u sec"
+
+0x418D3
+C7 C3 B7 B9 C0 CC BE EE 20 C1 D8 BA F1 00
+"Players Ready"
+
+0x43CEB
+B5 E5 B6 F8 C3 A2 20 BC FB B1 E2 B1 E2
+"Drop screen off" + { 0x0A } + "Do NOT control any units/buildings!     "
+
+0x43CD7
+B5 E5 B6 F8 C3 A2 20 BA B8 C0 CC B1 E2 0A
+"Drop screen on" + { 0x0A } + { 0x08 } + "Actions may be detected as hacks!"
+
+0x43DB3
+BD C3 B0 E8 20 BA B8 C0 CC B1 E2
+"Time off"
+
+0x43DA3
+BD C3 B0 E8 20 BA B8
+"Time on"
+
+0x43CBD
+C0 DA B5 BF 20 B9 E6 20 BB F5 B7 CE B0 ED C4 A7
+"Automatic refresh %s"
+
+0x4297D
+??
+"Automatic game refresh disabled" + { 0x20 }
+
+0x4299F
+??
+"3 minutes passed)"
+
+0x429C8
+??
+"seconds until refreshing."
+
+0x41C0B
+BF F8 BC F8
+"English"
