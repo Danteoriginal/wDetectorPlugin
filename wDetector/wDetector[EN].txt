@@ -20,7 +20,7 @@ Detailed documentation will hopefully be created in the future.
 - See website for changelog of previous updates
 - http://cafe.daum.net/wDetector/Fqmu/37
 
-* 추가
+* Added
 - Change speed #S1 ~ #S3 (don't need to type at the end of the game name)
  ( patched to same memory code system to Aqua. Dependent to CPU speed)
 - Change speed #X1 ~ #X5 (don't need to type at the end of the game name)
@@ -33,7 +33,7 @@ Detailed documentation will hopefully be created in the future.
 (wDetector.ini's AutoCloseSlots option. Ex if game room has 3:3, bottom 2 slots will be closed)
 - Game refresh timer (You can press F5 to manually refresh the game)
 - Automatically refresh game (AutoRefresh option from wDetector.ini. keypad '+'. Off while typing)
-- Reduced error messge timer when you are not able to join a game from 6 seconds to 2 seconds ("The latency to the game creator is too high." Message)
+- Reduced the error message timer from 6 seconds to 2 seconds when you are not able to join a game ("The latency to the game creator is too high." message)
 - Show if player is in NAT. (mark "NAT" on player list. you can assume this player is using a router)
 - Show selected race of each player on player list (Random, Terran, Zerg, Protoss)
 - Show player list in allied forces, enemy forces
@@ -58,42 +58,42 @@ Detailed documentation will hopefully be created in the future.
 	Ctrl + T : Toggle in-game clock (keypad '/')
 
 * Temporarily removed
-- wDetector 채널에서 "강퇴 ID" 메시지를 5번 받으면 강퇴되는 기능
-- 상대방 개인 플레이 화면 보기 기능
+- wDetector has ban privileges when "Ban [Username]" has been received 5 times.
+- Screen sharing feature
 
-* 제거
-- 핵 사용자 괴롭히기 기능 (맵핑 보내기 기능, 동맹 변경 기능)
-- 1분마다 핵 사용자 체크 기능 (동맹 변경 기능)
-- 메신저 기능(네이트온, 아프리카)을 사용중인지 보여주던 것 (버전 옆에 M 뜨던 것)
+* Removed
+- Annoy hackers(map ping, change ally)
+- Check for hackers every minute(Alliance change function)
+- NateOn and Afreeca Messenger
 
-* 유지
+* Keeping
 - F5: Refresh game
 - View ping
 - APM counter
-- 재전송 요청 수 보여주기
+- Display re-send request frequency
 - Display map uploader
 - Display download percentages
-- 자동으로 전적 받아오기
-- Prevent /astat (방에 한꺼번에 들어왔을 때 배틀넷 끊김 방지)
+- Automatic stats
+- Prevent /astat (to prevent getting dropped from the server when too many people join)
 - 중복된 방 상태 변화 전송 막기 (방에 한꺼번에 들락날락거릴 때 배틀넷 끊김 방지)
 - Change latency (#L1 ~ #L5, #LL)
 - wDetector-only games (#W)
-- Display other wDetector users (아쿠아도 알아봄)
+- Display other wDetector users (and also AquaLauncher users)
 - Dedicated wDetector channels
 - F6: Move to custom channel
 - F7, F8: Friend follow
 - Game name filtering
 - Advertisement filtering (duplicate messages, username#[...], chat, message length)
-- wDetector 채널에서 욕 필터링
+- Swear word filtering in wDetector channels
 - wDetector version check
 - Copy player username feature (Ctrl + keypad 1~8)
 - Automatically save replays (games must be minimum 2 minutes)
-- Toggle drop window (빠른 시간 단축 불가)
+- Toggle drop window (unable to reduce time)
 - Disable Windows key and F1 key
-- 창모드에서 한글 깨짐 방지 (아쿠아, 미니 호환)
-- 네이트온, 아프리카 메시지 보기
+- Prevent broken Korean font 
+- View NateOn and Afreeca messages
 - Automatically create Windows Firewall exception for StarCraft
-- 한글 윈도우에서만 사용 가능 (한글 윈도우가 아니어도 "나는 한국인"을 치면 풀림)
+- Only Korean Windows can use wDetector(if you're not using Korean Windows, type "나는 한국인" to unlock access)
 - BMP screenshots
 - EUD Actions
 - WDP packet writing
@@ -104,24 +104,24 @@ Detailed documentation will hopefully be created in the future.
 - Hosthack detection
 - Nuke anywhere hack detection
 - Auto-mine and auto-build detection
-- 오토큐 핵 감지
+- Auto-queue hack detection
 - Multicommand hack detection
 - Order buffer hack detection
-- 뉴클리어 핵 감지
+- Nuke hack detection
 - 뉴클리어 취소 핵 감지
 - Rally point hack detection
-- 치트 패킷 핵 감지
+- Cheat packet detection
 - Drop hack detection(packet validation, 0xFF packet, Pause, Leave)
 - Crash hack detection
 - Low Latency hack detection
 - Hacked packet detection
 - Fake hack detector detection
-- 부대 지정 사용 감지 (NoHK)
+- Hotkey detection (NoHK)
 - Announce hackers to other players (keypad 1~9)
 - Crash Oblivion 4.0.4+ users
-- 핵이 로드되어 있는지 확인
-- 게임중 핵이 로드됐을 때 강제 종료
-- 자신이 핵을 쓰면 동맹 끊기
+- Check for loaded hacks
+- Force shut down if hacks are loaded
+- Unally hackers
 - Reverse engineering prevention
 
 
@@ -134,14 +134,14 @@ Detailed documentation will hopefully be created in the future.
 
 *. Instructions
 
-  F2, F3, F4 : Go to wDetector's first, second, or third channel, respectively. (Shift와 함께 누르면 1시간 이전 채널로 이동됩니다.)
+  F2, F3, F4 : Go to wDetector's first, second, or third channel, respectively. (Pressing with Shift button will move you to the channel you were at 1 hour ago.)
   F5 : Go to advertiser's website.
   Shift + F5 : Read advertisement.
   F6 : Go to the channel set in MyChannel1 from wDetector.ini. (Pressing with Shift will go to MyChannel2 instead.)
   F7 : Sets the friend to follow. (You must type the username of the friend to follow.)
   F8 : Follows friend to their game. (Press when the friend joins a game.)
 
-  /filter : wDetectorFilter.txt 필터링 파일을 열거나 필터링할 단어를 추가할 수 있습니다.
+  /filter : Open wDetectorFilter.txt to add words to filter
 
 
 
@@ -169,7 +169,7 @@ Detailed documentation will hopefully be created in the future.
   Ctrl + keypad '1~8' : Copies player [1-8]'s username.
   Alt + keypad '1~8' : Request player [1-8] to show his/her screen.
   Win + keypad '1~8' : Ignore whispers from player [1-8]. (/ignore)
-  Ctrl + Alt + keypad '1~8' : 특정(1~8) 플레이어에게 화면을 보여주거나 보여주고 있던 화면을 끕니다.
+  Ctrl + Alt + keypad '1~8' : Disable screen sharing with player [1-8].
   keypad '-' : Toggle drop window.
   keypad '*' : Crash Oblivion users. (After pressing, do not control anything.)
   keypad '/' : Toggle clock.
