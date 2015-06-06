@@ -1,8 +1,8 @@
-wDetector 3.35 Offsets
+wDetector 3.36 Offsets
 Note:	Some strings may be shortened because of no available memory
 	All strings MUST be null-terminated(unless a byte follows the string), undefined behavior otherwise.
 Format:	Offset
-	Reference byte array(including surrounding bytes for easier searching)
+	Reference byte array(may include surrounding bytes for easier searching)
 	New value(starting at the offset)
 ----------------------------------------------------------------------------------------------------
 
@@ -10,58 +10,58 @@ Format:	Offset
 00 03 00 00 00 09 04 00 00
 { 0x12 }
 
-0x429C4
+0x43CBA
 3C 77 44 65 74 65 63 74 6F 72 2E 20 33 2E 33 35
 "<wDetector 3.35 - Refreshing>"
 
-0x43C9D
+0x43CBD
 00 00 03 C0 DA B5 BF 20 B9 E6 20 BB F5 B7 CE B0 ED C4
-"자동 방 새로고침"
+"Refreshing"
 
-0x43C94
-04 C4 D1 B1 E2 00 00 00 03 C0 DA B5 BF 20 B9 E6
+0x43CB4
+C4 D1 B1 E2
 "enabled"
 
 0x43C8C
-00 00 05 B2 F4 B1 E2 00 00 00
+B2 F4 B1 E2
 "disable"
 
-0x41B7C
-00 C1 F6 B3 B2 00 00 00
+0x41B8C
+C1 F6 B3 B2 00
 "ago"
 
-0x41B74
+0x41B84
 00 00 00 BA D0 00
 "min"
 
-0x41B78
+0x41B88
 00 C3 CA 00 00
 "sec"
 
-0x41AA0
+0x41AB0
 BA D0 20 25 75 C3 CA 20 C1 F6 B3
 " min %u sec"
 
-0x418C3
-2D 20 C7 C3 B7 B9 C0 CC BE EE 20 C1 D8 BA F1 00
+0x418D3
+C7 C3 B7 B9 C0 CC BE EE 20 C1 D8 BA F1 00
 "Players Ready"
 
-0x43CCA
+0x43CEB
 B5 E5 B6 F8 C3 A2 20 BC FB B1 E2 B1 E2
 "Drop screen off" + { 0x0A } + "Do NOT control any units/buildings!     "
 
-0x43CB6
-
+0x43CD7
+B5 E5 B6 F8 C3 A2 20 BA B8 C0 CC B1 E2 0A
 "Drop screen on" + { 0x0A } + { 0x08 } + "Actions may be detected as hacks!"
 
-0x43D93
+0x43DB3
 BD C3 B0 E8 20 BA B8 C0 CC B1 E2
 "Time off"
 
-0x43D83
+0x43DA3
 BD C3 B0 E8 20 BA B8
 "Time on"
 
-0x43C9D
-C0 DA B5 BF 20 B9 E6 20 BB F5 B7 CE B0 ED C4 A7 
+0x43CBD
+C0 DA B5 BF 20 B9 E6 20 BB F5 B7 CE B0 ED C4 A7
 "Automatic refresh %s"
