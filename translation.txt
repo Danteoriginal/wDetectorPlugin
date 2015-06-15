@@ -81,3 +81,7 @@ BF F8 BC F8
 0x42755
 B7 A2 20 B9 DF BB FD
 "Conflict" (no null terminator)
+
+0x444CC
+B0 A1 20 B4 E7 BD C5 C0 BB 20 B0 AD C5 F0 C7 CF BF B4 BD C0 B4 CF B4 D9
+"has banned you. (Host hack)"
