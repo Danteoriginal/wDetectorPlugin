@@ -11,6 +11,10 @@ Detailed documentation will hopefully be created in the future.
 
 [Changelog]
 
+# 3.37
+- 게임이 끝난 후 복구되는 데이터 영역 추가 (EUD 맵)
+- 스타크래프트 창 프로시저가 변경되지 않던 것 수정
+
 # 3.36
 - Fixed packet processing bug that caused packet modifications
 

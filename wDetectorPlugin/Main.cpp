@@ -59,7 +59,7 @@ extern "C" __declspec(dllexport) void GetPluginAPI(ExchangeData &Data)
 extern "C" __declspec(dllexport) void GetData(char* name, char* description, char* updateurl)
 {
 	char* name0 = "wDetector";
-	char* description0 = "Injects and patches wDetector 3.36\r\n\r\nwDetector by Won Soon-cheol\r\nwDetector offsets by DyS- and mca64\r\nwDetector Plugin by iCCup.xboi209";
+	char* description0 = "Injects and patches wDetector 3.37\r\n\r\nwDetector by Won Soon-cheol\r\nwDetector offsets by DyS- and mca64\r\nwDetector Plugin by iCCup.xboi209\r\nhttps://github.com/xboi209/wDetectorPlugin/";
 	char* updateurl0 = "";
 
 	//https://github.com/MasterOfChaos/Chaoslauncher/blob/88c889c203e9fe47880fa1661657f2428ffa736e/Source/Launcher/Launcher/Plugins_CHL.pas#L82
@@ -91,7 +91,7 @@ extern "C" __declspec(dllexport) bool ApplyPatchSuspended(HANDLE, DWORD)
 		return false;
 	}
 
-	if (wcscmp(FileVersion(WDETECTOR), L"3.36") != 0)
+	if (wcscmp(FileVersion(WDETECTOR), L"3.37") != 0)
 	{
 		MessageBoxW(NULL, L"wDetector's version is incorrect!", L"wDetector Plugin", MB_OK | MB_ICONERROR);
 		return false;
@@ -170,10 +170,10 @@ extern "C" __declspec(dllexport) bool ApplyPatch(HANDLE hProcess, DWORD dwProces
 	WriteProcessMemory(hProcess, (LPVOID)(wDetectorBaseAddress + (uint32_t)0x5AD94), &activate, sizeof(activate), NULL);
 	wLog(LOG_INFO, L"wDetector activated!");
 
-	std::array<uint32_t, 15> offset = {
-		0x429E4,		//Refresh game message
-		0x43CB4,		//toggle automatic refresh - enable
-		0x43CAC,		//toggle automatic refresh - disable
+	std::array<uint32_t, 17> offset = {
+		0x429E4,	//Refresh game message
+		0x43CB4,	//toggle automatic refresh - enable
+		0x43CAC,	//toggle automatic refresh - disable
 		0x41B8C,	//ago
 		0x41B84,	//min
 		0x41B88,	//sec
@@ -185,10 +185,12 @@ extern "C" __declspec(dllexport) bool ApplyPatch(HANDLE hProcess, DWORD dwProces
 		0x4297D,	//Automatic game refresh disable -msg after 3 mins
 		0x4299F,	//3 minutes passed) -msg after 3 mins
 		0x429C7,	//F5 - seconds until refreshing.
-		0x41C0B		//English
+		0x41C0B,	//English
+		0x42755,	//"Conflict" (no null terminator)
+		0x444CC		//"has banned you. (Host hack)"
 	};
 
-	std::array<std::string, 15> vals = {
+	std::array<std::string, 17> vals = {
 		"Refreshing", //<wDetector 3.35 - Refreshing>
 		"enabled", //toggle automatic refresh
 		"disable", //toggle automatic refresh
@@ -203,15 +205,48 @@ extern "C" __declspec(dllexport) bool ApplyPatch(HANDLE hProcess, DWORD dwProces
 		"Automatic game refresh disable", //msg after 3 mins
 		"3 minutes passed)", //msg after 3 mins
 		" seconds until refreshing.", //F5
-		"English"
+		"English",
+/*16*/	"Conflict",
+		"has banned you. (Host hack)"
+	};
+
+	std::array<char, 17> terminator = {
+		0x00,
+		0x00,
+		0x00,
+		0x00,
+		0x00,
+		0x00,
+		0x00,
+		0x00,
+		0x00,
+		0x00,
+		0x00,
+		0x00,
+		0x00,
+		0x00,
+		0x00,
+/*16*/	0x20,
+		0x00
 	};
 
 	{
 		char buff[50] = "";
+		int a = 0;
 		for (std::size_t i{ 0 }; i < offset.size(); ++i)
 		{
+			if (terminator.at(i) == 0x00)
+			{
+				a = 1;
+			}
+			else
+			{
+				vals.at(i) += terminator.at(i); //append to end of C++ string
+				a = 0; //don't leave room for null terminator
+			}
 			strcpy_s(buff, sizeof(buff), vals.at(i).c_str());
-			WriteProcessMemory(hProcess, (LPVOID)(wDetectorBaseAddress + offset.at(i)), buff, strlen(buff) + 1, NULL);
+			//vals.size() does not have a null terminator
+			WriteProcessMemory(hProcess, (LPVOID)(wDetectorBaseAddress + offset.at(i)), buff, vals.at(i).size() + a, NULL);
 		}
 	}
 
